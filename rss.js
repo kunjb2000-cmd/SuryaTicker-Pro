@@ -1,36 +1,35 @@
-// SuryaTicker Pro RSS Engine v2
+async function loadRSS() {
 
-const RSS = {
+const url="https://api.allorigins.win/raw?url="+encodeURIComponent("https://feeds.bbci.co.uk/news/world/rss.xml");
 
-    url: "",
+try{
 
-    refresh: 300000, // 5 मिनट
+const res=await fetch(url);
 
-    headlines: [],
+const xml=await res.text();
 
-    async load() {
+const parser=new DOMParser();
 
-        if (!this.url) {
-            console.log("RSS URL not set");
-            return;
-        }
+const data=parser.parseFromString(xml,"text/xml");
 
-        try {
+const items=data.querySelectorAll("item");
 
-            const response = await fetch(this.url);
+let headlines=[];
 
-            const text = await response.text();
+items.forEach(item=>{
 
-            console.log("RSS Loaded Successfully");
+headlines.push(item.querySelector("title").textContent);
 
-            // अगले चरण में XML Parser जोड़ेंगे
+});
 
-        } catch (e) {
+document.getElementById("news").innerHTML=headlines.join(" ◆ ");
 
-            console.log("RSS Error:", e);
+}catch(e){
 
-        }
+document.getElementById("news").innerHTML="RSS Loading Failed";
 
-    }
+}
 
-};
+}
+
+loadRSS();
