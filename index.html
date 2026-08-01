@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SuryaTicker Pro</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
-<script src="config.js"></script>
-<script src="settings.js"></script>
-<script src="ticker.js"></script>
-  <script src="config.js"></script>
-<script src="settings.js"></script>
-<script src="rss.js"></script>
-<script src="ticker.js"></script>
-<script src="script.js"></script>
-  
+
 <body>
 
-<!-- SETTINGS -->
+<!-- SETTINGS PANEL -->
 <div id="settings">
 
-<input type="text" id="labelText" placeholder="Label (BREAKING NEWS)" value="BREAKING NEWS">
+<input
+type="text"
+id="labelText"
+placeholder="Enter Label"
+value="BREAKING NEWS">
 
 <button onclick="changeLabel()">
 Change Label
@@ -31,7 +28,6 @@ Change Label
 </div>
 
 <!-- TICKER -->
-
 <div id="ticker">
 
 <div class="breaking" id="breakingLabel">
@@ -39,28 +35,31 @@ BREAKING NEWS
 </div>
 
 <div class="scroll">
-
 <div id="news">
-Loading RSS News...
+Loading...
+</div>
 </div>
 
-</div>
-
-<div class="live">
+<div class="live" id="liveLabel">
 LIVE
 </div>
 
 </div>
 
+<!-- JAVASCRIPT FILES -->
+<script src="config.js"></script>
+<script src="settings.js"></script>
+<script src="rss.js"></script>
+<script src="ticker.js"></script>
 <script src="script.js"></script>
 
 <script>
 
 function changeLabel(){
 
-let txt=document.getElementById("labelText").value;
+const txt=document.getElementById("labelText").value.trim();
 
-if(txt.trim()!=""){
+if(txt!==""){
 
 document.getElementById("breakingLabel").innerHTML=txt;
 
@@ -71,4 +70,5 @@ document.getElementById("breakingLabel").innerHTML=txt;
 </script>
 
 </body>
+
 </html>
