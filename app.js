@@ -1,19 +1,21 @@
-/* ===================================================
-   SuryaTicker Pro v2
-   Main Application Engine
-=================================================== */
+/* ==================================================
+   SuryaTicker Pro V2
+   App Engine - Part 1
+================================================== */
 
 const App = {
 
-    mode: "text",
+    version: "2.0",
 
     settings: {
+
+        mode: "text",
 
         label: "BREAKING NEWS",
 
         live: "LIVE",
 
-        text: "SuryaTicker Pro में आपका स्वागत है",
+        text: "Welcome to SuryaTicker Pro",
 
         rss: "",
 
@@ -21,7 +23,7 @@ const App = {
 
         fontSize: 28,
 
-        height: 60,
+        tickerHeight: 60,
 
         breakingColor: "#d50000",
 
@@ -37,7 +39,35 @@ const App = {
 
         this.load();
 
+        this.bind();
+
         this.render();
+
+    },
+
+    bind(){
+
+        const btn=document.getElementById("btnLabel");
+
+        if(btn){
+
+            btn.onclick=()=>{
+
+                const txt=document.getElementById("labelText").value.trim();
+
+                if(txt!=""){
+
+                    this.settings.label=txt;
+
+                    this.save();
+
+                    this.render();
+
+                }
+
+            }
+
+        }
 
     },
 
@@ -45,13 +75,17 @@ const App = {
 
         document.getElementById("breakingLabel").innerText=this.settings.label;
 
-        document.querySelector(".live").innerText=this.settings.live;
+        document.getElementById("liveLabel").innerText=this.settings.live;
 
-        document.getElementById("news").innerHTML=this.settings.text;
+        const news=document.getElementById("news");
 
-        document.getElementById("news").style.fontSize=this.settings.fontSize+"px";
+        news.innerHTML=this.settings.text;
 
-        document.getElementById("news").style.color=this.settings.textColor;
+        news.style.fontSize=this.settings.fontSize+"px";
+
+        news.style.color=this.settings.textColor;
+
+        news.style.animationDuration=this.settings.speed+"s";
 
         document.querySelector(".breaking").style.background=this.settings.breakingColor;
 
@@ -59,13 +93,15 @@ const App = {
 
         document.querySelector(".live").style.background=this.settings.liveColor;
 
+        document.getElementById("ticker").style.height=this.settings.tickerHeight+"px";
+
     },
 
     save(){
 
         localStorage.setItem(
 
-            "SuryaTicker",
+            "SuryaTickerPro",
 
             JSON.stringify(this.settings)
 
@@ -75,7 +111,7 @@ const App = {
 
     load(){
 
-        let data=localStorage.getItem("SuryaTicker");
+        const data=localStorage.getItem("SuryaTickerPro");
 
         if(data){
 
@@ -87,7 +123,7 @@ const App = {
 
 };
 
-window.onload=function(){
+window.onload=()=>{
 
     App.init();
 
