@@ -11,9 +11,22 @@
 
 <body>
 
+<!-- SETTINGS -->
+<div id="settings">
+
+<input type="text" id="labelText" placeholder="Label (BREAKING NEWS)" value="BREAKING NEWS">
+
+<button onclick="changeLabel()">
+Change Label
+</button>
+
+</div>
+
+<!-- TICKER -->
+
 <div id="ticker">
 
-<div class="breaking">
+<div class="breaking" id="breakingLabel">
 BREAKING NEWS
 </div>
 
@@ -32,6 +45,22 @@ LIVE
 </div>
 
 <script src="script.js"></script>
+
+<script>
+
+function changeLabel(){
+
+let txt=document.getElementById("labelText").value;
+
+if(txt.trim()!=""){
+
+document.getElementById("breakingLabel").innerHTML=txt;
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
