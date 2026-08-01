@@ -1,115 +1,187 @@
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 html,body{
-    width:100%;
-    height:100%;
-    background:transparent;
-    overflow:hidden;
-    font-family:Arial, sans-serif;
+width:100%;
+height:100%;
+background:transparent;
+overflow:hidden;
+font-family:Arial,sans-serif;
 }
+
+/* SETTINGS */
+
+#settings{
+
+position:fixed;
+
+top:10px;
+
+left:10px;
+
+z-index:999999;
+
+display:flex;
+
+gap:8px;
+
+}
+
+#settings input{
+
+width:220px;
+
+height:38px;
+
+padding:8px;
+
+font-size:16px;
+
+border-radius:6px;
+
+border:none;
+
+}
+
+#settings button{
+
+padding:8px 14px;
+
+background:#0066ff;
+
+color:white;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+}
+
+/* TICKER */
 
 #ticker{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    height:70px;
 
-    display:flex;
-    align-items:center;
+position:fixed;
 
-    background:rgba(0,0,0,0);
+bottom:0;
 
-    z-index:99999;
+left:0;
+
+width:100%;
+
+height:60px;
+
+display:flex;
+
+background:transparent;
+
+z-index:99999;
+
 }
+
+/* BREAKING */
 
 .breaking{
 
-    width:260px;
-    height:70px;
+width:145px;
 
-    background:#d50000;
+height:60px;
 
-    color:white;
+background:#d50000;
 
-    display:flex;
+color:#fff;
 
-    justify-content:center;
+display:flex;
 
-    align-items:center;
+align-items:center;
 
-    font-size:28px;
+justify-content:center;
 
-    font-weight:bold;
+font-size:18px;
+
+font-weight:bold;
+
+text-align:center;
+
+padding:5px;
 
 }
 
+/* NEWS */
+
 .scroll{
 
-    flex:1;
+flex:1;
 
-    height:70px;
+height:60px;
 
-    overflow:hidden;
+overflow:hidden;
 
-    background:rgba(0,0,0,.65);
+background:rgba(0,0,0,.70);
 
-    display:flex;
+display:flex;
 
-    align-items:center;
+align-items:center;
 
 }
 
 #news{
 
-    white-space:nowrap;
+white-space:nowrap;
 
-    color:#ffffff;
+padding-left:100%;
 
-    font-size:34px;
+font-size:28px;
 
-    font-weight:bold;
+font-weight:bold;
 
-    padding-left:100%;
+color:white;
 
-    animation:ticker 25s linear infinite;
+animation:ticker 22s linear infinite;
 
 }
 
+/* LIVE */
+
 .live{
 
-    width:120px;
+width:90px;
 
-    height:70px;
+height:60px;
 
-    background:#ff0000;
+background:red;
 
-    color:white;
+display:flex;
 
-    display:flex;
+align-items:center;
 
-    align-items:center;
+justify-content:center;
 
-    justify-content:center;
+font-size:18px;
 
-    font-size:28px;
+font-weight:bold;
 
-    font-weight:bold;
+color:white;
 
 }
 
 @keyframes ticker{
 
 0%{
+
 transform:translateX(0);
+
 }
 
 100%{
+
 transform:translateX(-100%);
+
 }
 
 }
